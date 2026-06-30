@@ -1,0 +1,19 @@
+# Dependencias e build
+/vendor/
+/node_modules/
+*.log
+
+# Ambiente
+.env
+.env.*
+.DS_Store
+Thumbs.db
+
+# Editores
+.idea/
+.vscode/
+*.swp
+
+# Empacotamento
+/dist/
+#*.zip
