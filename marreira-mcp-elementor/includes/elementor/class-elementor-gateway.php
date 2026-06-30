@@ -280,10 +280,38 @@ class Elementor_Gateway {
 		$merged  = array_merge( $current, $settings );
 		update_post_meta( $post_id, self::META_PAGE_SETTINGS, $merged );
 
+		// O "Page Layout" do Elementor (Canvas / Header-Footer / Default) so vale
+		// se o template real do WordPress (_wp_page_template) for sincronizado.
+		// Sem isso, o tema continua renderizando header/footer. Espelha o que o
+		// editor do Elementor faz ao salvar.
+		if ( isset( $settings['template'] ) ) {
+			self::sync_wp_page_template( $post_id, (string) $settings['template'] );
+		}
+
 		if ( class_exists( '\Marreira\MCP_Elementor\Elementor\Css_Regenerator' ) ) {
 			Css_Regenerator::regenerate( $post_id );
 		}
 		return true;
+	}
+
+	/**
+	 * Sincroniza o template de pagina do WordPress (_wp_page_template) com o
+	 * Page Layout escolhido no Elementor.
+	 *
+	 * @param int    $post_id  Post.
+	 * @param string $template Valor: default, elementor_canvas ou elementor_header_footer.
+	 * @return void
+	 */
+	private static function sync_wp_page_template( $post_id, $template ) {
+		$allowed = array( 'default', 'elementor_canvas', 'elementor_header_footer' );
+		if ( ! in_array( $template, $allowed, true ) ) {
+			return;
+		}
+		if ( 'default' === $template ) {
+			delete_post_meta( $post_id, '_wp_page_template' );
+			return;
+		}
+		update_post_meta( $post_id, '_wp_page_template', $template );
 	}
 
 	/**

@@ -10,6 +10,17 @@ o header `Version:` do arquivo principal, o `Stable tag:` do `readme.txt` e
 uma nova entrada neste arquivo (espelhada na seção `== Changelog ==` do
 `readme.txt`).
 
+## [0.1.1] - 2026-06-29
+
+### Corrigido
+
+- `set_page_settings` agora sincroniza o template real do WordPress
+  (`_wp_page_template`) quando a chave `template` é informada. Sem isso, escolher
+  o Page Layout "Elementor Canvas" / "Elementor Full Width" gravava apenas o
+  `_elementor_page_settings`, e o tema continuava renderizando header e footer.
+  Agora o layout Canvas (sem header/footer) passa a valer de fato, espelhando o
+  comportamento do editor do Elementor.
+
 ## [0.1.0] - 2026-06-29
 
 ### Adicionado

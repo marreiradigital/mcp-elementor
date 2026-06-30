@@ -3,7 +3,7 @@
  * Plugin Name:       MarreiraMCP Elementor
  * Plugin URI:        https://marreiradigital.com.br/marreira-mcp-elementor
  * Description:        Servidor MCP (Model Context Protocol) para criar e editar paginas e templates do Elementor e Elementor Pro de forma nativa via IA, com seguranca por token e endpoints ocultos do indice publico do REST.
- * Version:           0.1.0
+ * Version:           0.1.1
  * Requires at least: 6.4
  * Requires PHP:      7.4
  * Author:            Paulo Marreira
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // ---------------------------------------------------------------------------
 // Constantes do plugin.
 // ---------------------------------------------------------------------------
-define( 'MME_VERSION', '0.1.0' );
+define( 'MME_VERSION', '0.1.1' );
 define( 'MME_PLUGIN_FILE', __FILE__ );
 define( 'MME_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MME_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
